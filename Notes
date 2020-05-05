@@ -1,0 +1,306 @@
+
+checking version of github -:   git --version
+
+
+/////                                                                                       git basic command
+
+git --version
+
+Step 2 : Download and install git
+  https://git-scm.com/download/mac
+
+Step 3 : Signup and create a account on GitHub
+  https://github.com/
+
+Step 4 : Add your github email and username to git
+  git config --global user.email "yourGitHub@email.com"
+  git config --global user.name "yourGitHubusername"
+
+
+remove --global to if you are using different account of gitHub in project
+in only user.name
+
+git config --list
+
+    --> to show user.name and user.email
+
+Step 5 : Add file/folders to git - tracking
+
+
+   - terminal - goto the location of the folder/project
+          - git init
+
+    it will create a hidden folder
+                ls -a
+
+                or
+
+                defaults write com.apple.finder AppleShowAllFiles YES   
+                (or NO for not showing)
+                then 
+                press option + command and right click on finder click on relaunch
+
+
+
+   - git status
+   - git add        <filename>
+
+    to add    *.txt  all files with this extension will get added
+    to add    *.*  all files     will be added
+    to add     .   everything will be added
+
+
+
+   - git commit -m “…..”
+
+
+   - git remote add origin <location of remote repo from GITHUB>
+
+   - git push -u origin master              (or instead master any branch user is working)
+
+   - git log                        /// all changes I made
+   - git --help
+
+
+rm -rf .git                     // undo git init
+
+------------------------------------------------------------------------------------------------------------>>>>
+
+
+////                                                                                        git autocomplete 
+
+
+Step 1 :  goto terminal
+        put git-completion.bash script in your home directory
+curl https://raw.githubusercontent.com/git... -o ~/.git-completion.bash
+
+
+Step 2 : Add following line to your .bash_profile. 
+       This tells bash to run git autocomplete script if it exists
+
+vi ~/.bash_profile
+
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
+
+For enabling git colors
+————————————
+
+Step 1 : check if colouring is already enabled
+  terminal - git config color.ui
+
+Step 2 : enable colouring 
+  git config --global color.ui true
+
+
+
+
+------------------------------------------------------------------------------------------------------------>>>>
+
+////                                                                                    branches 
+
+Step 1 : Create branch 
+   git branch “branch name”
+
+Step 2 : Checkout branch                     or say basically switching to branch
+   
+    git checkout “branch name”
+    git checkout master
+
+
+Step 3 : Merge new branch in master branch
+
+// first go inside checkout to master then merge 
+   git merge “branch name”
+
+// after this to remember to push the changes on github
+
+
+
+Step 4 : Delete branch
+   git branch --d “branch name”    //delete from local    ( or instead of -- use -)
+   git push origin --delete “branch name”   //delete from remote
+
+
+
+
+--->>   all branches 
+
+        git branch
+
+
+--->>    current branch
+
+        git rev-parse --abbrev-ref HEAD
+
+        
+
+
+
+------------------------------------------------------------------------------------------------------------>>>>
+
+//                                                                                 sending MAILs
+
+Step 1 : Github - Repository - Settings - notification - add email 
+
+Step 2 : Test and validate by making some change in the project
+
+------------------------------------------------------------------------------------------------------------>>>>
+
+
+/////                                                                           tags in git
+
+1. What are tags / releases
+2. Why should i create TAGs
+3. When to create TAGs
+4. How to create TAGs in git
+     create | show | publish | delete
+
+Step 1:
+Checkout the branch where you want to create the tag
+git checkout "branch name"
+example : git checkout master
+________________________________________________________
+
+Step 2:
+Create tag with some name
+git tag "tag name"
+example : git tag v1.0
+
+
+git tag -a v1.0 -m "ver 1 of .."  (to create annotated tags)          /// annotated tag 
+________________________________________________________
+
+Step 3:
+Display or Show tags
+git tag
+git show v1.0
+git tag -l “v1.*”
+________________________________________________________
+
+Step 4:
+
+Push tags to remote
+git push origin v1.0
+
+
+git push origin --tags
+git push --tags 
+(to push all tags at once)
+________________________________________________________
+
+Step 5:
+Delete tags (if required only)
+to delete tags from local :
+git tag -d v1.0
+git tag --delete v1.0
+
+to delete tags from remote :
+git push origin -d v1.0
+git push origin --delete v1.0
+git push origin :v1.0
+
+to delete multiple tags at once:
+git tag -d v1.0 v1.1 (local)
+git push origin -d v1.0 v1.1 (remote)
+
+________________________________________________________
+
+
+Checking out TAGS
+
+We cannot checkout tags in git
+We can create a branch from a tag and checkout the branch
+
+//basically it will open the branch which is present in v1.0 version ......
+
+git checkout -b "branch name" "tag name"
+example : git checkout -b ReleaseVer1 v1.0
+________________________________________________________
+
+Creating TAGS from past commits
+
+git tag "tag name" "reference of commit"
+
+
+/*
+
+  commit -: ecc7a0ce7160c38b3ad5760b655704db986a7549
+
+  like if this is the commit id I can use either all or some part to make tag at this point. 
+
+*/
+
+  example : git tag  v1.2 5fcdb03
+
+------------------------------------------------------------------------------------------------------------>>>>
+
+every commit has a unique number(check sum number) of 40 chars which is genertaed by a sha1 algorithm
+
+
+  -->       github rebase and merge
+
+
+  git merge
+git rebase
+
+git merge
+- Is a non-destructive operation
+- Existing branches are not changed in any way
+- Creates a new merge commit in the feature branch
+
+
+
+--->  inside NewBranch  write 
+
+         git merge master
+
+         merged changes from master branch into < NewBranchName > branch    // this is just the message you want to pass along
+
+
+--->   inside NewBranch write for rebase
+
+git rebase
+- Moves the entire feature branch to begin on the tip of the master branch
+- Re-writes the project history
+- We get much cleaner and linear project history
+
+
+
+------------------------------------------------------------------------------------------------------------>>>>
+
+
+
+git and VScode  
+
+1. How to add an existing vs code project to git and github
+2. How to do commit and push whenever changes happen
+3. How to clone from github to vscode
+4. How to remove project from git
+
+Note: You may need to set git credentials on your system using the commands
+git config --global user.email "you@example.com"
+ git config --global user.name "Your Name"
+
+Step 1 : Install git on your system
+
+Step 2 : Create account on github - https://github.com/
+
+Step 3 : Create a repository on github & copy url
+
+Step 4 : Goto VS Code and open project/folder
+
+note : check git is enabled from settings
+
+Step 5 : Goto source control section & click on git icon
+
+Step 6 : Give commit message & Commit the changes
+
+Step 7 : Add remote repo (github repo)
+
+Step 8 : Push commited changes to github repo
+
+Step 9 : Check changes on github repo
+------------------------------------------------------------------------------------------------------------>>>>
