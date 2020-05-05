@@ -1,0 +1,73 @@
+
+git config --global user.email "yourGitHub@email.com"
+git config --global user.name "yourGitHubusername"
+git config --list
+
+
+
+git init
+git add .		// for all
+git commit -m “…..”
+git log 
+git status
+git remote add origin  $PATH
+git push -u origin master
+
+
+rm -rf .git  // to delete git
+
+
+git branch “branch name”
+git checkout “branch name”
+
+// first go inside checkout to master then merge 
+   git merge “branch name”
+// after this to remember to push the changes on github
+
+git branch --d “branch name”    //delete from local    ( or instead of -- use -)
+git push origin --delete “branch name”   //delete from remote
+
+git rev-parse --abbrev-ref HEAD //  current branch
+
+
+
+
+git tag "tag name"
+git tag -a v1.0 -m "ver 1 of .."  (to create annotated tags)          /// annotated tag 
+
+
+git tag
+git show v1.0
+git tag -l “v1.*”
+
+
+git push origin --tags
+git push --tags 
+(to push all tags at once)
+
+to delete tags from local :
+git tag -d v1.0
+git tag --delete v1.0
+
+to delete tags from remote :
+git push origin -d v1.0
+git push origin --delete v1.0
+git push origin :v1.0
+
+
+// more about tags from notes
+
+git tag  v1.2 5fcdb03  // where 5fcdb03 is commit id initials
+
+
+git merge master
+
+git rebase master
+
+
+
+
+
+
+
+
