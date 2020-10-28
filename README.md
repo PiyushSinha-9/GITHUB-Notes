@@ -1,3 +1,3 @@
 ## GITHUB NOTES
 
-### I have created this notes myself.
+### I have created these notes myself.
