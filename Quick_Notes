@@ -1,3 +1,8 @@
+----  if you have commited from your end and want to delete that commit locally
+git reset --soft HEAD~1
+
+
+
 
 git config --global user.email "yourGitHub@email.com"
 git config --global user.name "yourGitHubusername"
