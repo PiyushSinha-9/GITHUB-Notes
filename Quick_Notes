@@ -71,6 +71,24 @@ git rebase master
 
 
 
+##########. checkout/switch
+
+git checkout -b branch-name {To create a new branch if not already and move to it}
+git switch branch-name {Best way to move between branches}
+
+######## IMPORTANT STASH concepts
+
+As it turns out, Git is smart enough not to drop a stash if it doesn't apply cleanly. I was able to get to the desired state with the following steps:
+
+To unstage the merge conflicts: git reset HEAD . (note the trailing dot)
+To save the conflicted merge (just in case): git stash
+To return to master: git checkout master
+To pull latest changes: git fetch upstream; git merge upstream/master
+To correct my new branch: git checkout new-branch; git rebase master
+To apply the correct stashed changes (now 2nd on the stack): git stash apply stash@{1}
+
+
+
 
 
 
